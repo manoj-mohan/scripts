@@ -1,0 +1,35 @@
+#Westcon aliases
+export NIMBUS_CORE_BASE="/home/manoj/Projects/Westcon"
+export NIMBUS4_SOLUTIONS_BASE="$NIMBUS_CORE_BASE/nimbus4"
+export NIMBUS4_SOLUTIONS_REPO="$NIMBUS4_SOLUTIONS_BASE/nimbus4-solutions"
+export NIMBUS4_PERFORMANCE_TEST_REPO="/home/manoj/Documents/performancetest"
+export MICROSOFT_PRICE_FILE_HOME="$NIMBUS4_SOLUTIONS_REPO/priceFiles"
+export WESTCON_USERNAME="jdominic"
+export AMAZON_USERNAME="jdominic"
+. ${NIMBUS4_SOLUTIONS_REPO}/.nimbusrc
+
+export MICROSOFT_PRICE_FILE_HOME="/home/manoj/Documents/Verecloud/priceFiles"
+
+
+#Westcon uttility
+
+
+function nimbus_solutions_shell {
+# Now that nimbus_shell tool is moved to nimbus4 repo, changing the path for nimbus_shell & nimbus_console to point to nimbus4 
+  cd $NIMBUS4_SOLUTIONS_BASE/nimbus-shell;
+  #cd $NIMBUS4_SOLUTIONS_REPO/tools/nimbus-shell;
+  ./grailsw -Dgrails.env=$1 -Dgroovysh.prompt="nimbus($1)" shell;
+}
+function nimbus_solutions_console {
+  cd $NIMBUS4_SOLUTIONS_REPO/tools/nimbus-shell;
+  ./grailsw -Dgrails.env=$1 console;
+}
+
+
+#Westcon Shortcut
+alias nimbus_api='cd $NIMBUS_CORE_BASE/nimbus4/nimbus4-api;xtitle API;grails r-a'
+alias nimbus_admin='cd $NIMBUS_CORE_BASE/nimbus4/nimbus4-admin;xtitle ADMIN;grails r-a -Dserver.port=8090'
+alias nimbus_backend='cd $NIMBUS_CORE_BASE/nimbus4/nimbus4-backend;xtitle BACKEND;grails r-a -Dserver.port=8070'
+alias nimbus_portal='cd $NIMBUS_CORE_BASE/nimbus4/portals/rss;xtitle PORTAL;grunt serve'
+alias nimbus_sso='cd $NIMBUS_CORE_BASE/nimbus4/nimbus4-sso;xtitle SSO;./devRun.sh'
+
